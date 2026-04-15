@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#C8102E">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Mandiri Tokutei Ginou">
+<meta name="apple-mobile-web-app-title" content="Mandiri TG">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Mandiri Tokutei Ginou — Kerja di Jepang Tanpa Calo, 100% Legal</title>
+<meta name="description" content="Platform persiapan kerja mandiri ke Jepang via Tokutei Ginou (SSW). 14 sektor resmi, JLPT prep gratis, proses transparan tanpa biaya tersembunyi.">
+<link rel="canonical" href="https://mandiritokuteiginou.com">
+<link rel="alternate" hreflang="id" href="https://mandiritokuteiginou.com">
+<link rel="alternate" hreflang="ja" href="https://mandiritokuteiginou.com/ja">
+<link rel="alternate" hreflang="x-default" href="https://mandiritokuteiginou.com">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mandiritokuteiginou.com">
+<meta property="og:title" content="Mandiri Tokutei Ginou — Kerja di Jepang Tanpa Calo">
+<meta property="og:description" content="Platform persiapan kerja mandiri ke Jepang. 14 sektor SSW resmi, tools JLPT gratis, transparan & legal.">
+<meta property="og:locale" content="id_ID">
+<meta property="og:site_name" content="Mandiri Tokutei Ginou">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mandiri Tokutei Ginou — Kerja di Jepang Tanpa Calo">
+<meta name="twitter:description" content="Platform persiapan kerja mandiri ke Jepang. 14 sektor SSW resmi, JLPT prep gratis.">
+
+<!-- JSON-LD: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Mandiri Tokutei Ginou",
+  "url": "https://mandiritokuteiginou.com",
+  "description": "Platform persiapan kerja mandiri ke Jepang via program Tokutei Ginou (Specified Skilled Worker)",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+62-807-418-1493",
+    "contactType": "customer service",
+    "availableLanguage": ["Indonesian", "Japanese"]
+  },
+  "sameAs": []
+}
+</script>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Apakah saya harus bisa bahasa Jepang untuk mendaftar?", "acceptedAnswer": {"@type": "Answer", "text": "Tidak harus. Beberapa sektor tidak mewajibkan kemampuan bahasa Jepang. Kami menyediakan kelas persiapan N5/N4 gratis."}},
+    {"@type": "Question", "name": "Berapa biaya total yang perlu saya siapkan?", "acceptedAnswer": {"@type": "Answer", "text": "Biaya pendaftaran Rp 750.000, pelatihan Rp 3-8 juta, fee penempatan Rp 10-20 juta. Semua transparan dan bisa diangsur."}},
+    {"@type": "Question", "name": "Berapa lama proses dari daftar hingga berangkat?", "acceptedAnswer": {"@type": "Answer", "text": "Rata-rata 4-8 bulan tergantung kelengkapan dokumen, hasil tes, dan proses matching employer."}},
+    {"@type": "Question", "name": "Apakah bisa membawa keluarga ke Jepang?", "acceptedAnswer": {"@type": "Answer", "text": "Untuk SSW Level 1 (5 tahun) belum bisa. Jika naik ke Level 2, bisa mengajukan visa keluarga."}}
+  ]
+}
+</script>
+
+<!-- Analytics: replace GA_MEASUREMENT_ID with your actual ID -->
+<script>
+  // Lightweight event tracking (works with GA4, Plausible, or custom)
+  window.mtgTrack = function(event, data) {
+    // GA4
+    if (typeof gtag === 'function') {
+      gtag('event', event, data || {});
+    }
+    // Console log for debugging (remove in production)
+    console.log('[MTG Track]', event, data || {});
+  };
+
+  // Auto-track key conversion events
+  document.addEventListener('DOMContentLoaded', function() {
+    // Track page view with UTM
+    const params = new URLSearchParams(window.location.search);
+    mtgTrack('page_view', {
+      utm_source: params.get('utm_source') || 'direct',
+      utm_medium: params.get('utm_medium') || '',
+      utm_content: params.get('utm_content') || ''
+    });
+
+    // Track WA clicks
+    document.querySelectorAll('a[href*="wa.me"]').forEach(el => {
+      el.addEventListener('click', () => mtgTrack('wa_click', {
+        location: el.closest('section')?.id || 'unknown',
+        sector: el.href.match(/sektor%20(.+?)(%20|&|$)/)?.[1] || 'general'
+      }));
+    });
+
+    // Track sector modal opens
+    document.querySelectorAll('.sector-chip[data-name]').forEach(el => {
+      el.addEventListener('click', () => mtgTrack('sector_view', {
+        sector: el.dataset.name,
+        demand: el.dataset.demand
+      }));
+    });
+
+    // Track form interactions
+    const form = document.querySelector('form[onsubmit]');
+    if (form) {
+      form.querySelector('input')?.addEventListener('focus', function handler() {
+        mtgTrack('form_start');
+        this.removeEventListener('focus', handler);
+      });
+    }
+
+    // Track quiz completions
+    const origShowResult = window.showQuizResult;
+    if (origShowResult) {
+      window.showQuizResult = function() {
+        origShowResult();
+        mtgTrack('quiz_complete', { segment: quizData.segment });
+      };
+    }
+
+    // Track scroll depth
+    let maxScroll = 0;
+    const milestones = [25, 50, 75, 100];
+    window.addEventListener('scroll', function() {
+      const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      milestones.forEach(m => {
+        if (pct >= m && maxScroll < m) {
+          mtgTrack('scroll_depth', { percent: m });
+          maxScroll = m;
+        }
+      });
+    }, { passive: true });
+  });
+</script>
+
+<!-- GA4 placeholder: uncomment and add your ID
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #a00d24;
+    --red-light: #f5e6e9;
+    --white: #FFFFFF;
+    --off-white: #FAF9F7;
+    --ink: #111111;
+    --ink-mid: #444444;
+    --ink-soft: #888888;
+    --gold: #C9A84C;
+    --border: rgba(0,0,0,0.08);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: .4;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5vw;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow .3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,.08); }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: .6rem;
+    text-decoration: none;
+  }
+  .nav-logo-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.4rem;
+    color: var(--red);
+    line-height: 1;
+  }
+  .nav-logo-text {
+    display: flex; flex-direction: column;
+    line-height: 1.1;
+  }
+  .nav-logo-text span:first-child {
+    font-weight: 800; font-size: .85rem; letter-spacing: .02em;
+  }
+  .nav-logo-text span:last-child {
+    font-size: .6rem; color: var(--ink-soft); letter-spacing: .1em; text-transform: uppercase;
+  }
+
+  .nav-links { display: flex; align-items: center; gap: 2rem; }
+  .nav-links a {
+    text-decoration: none; color: var(--ink-mid);
+    font-size: .85rem; font-weight: 500; letter-spacing: .02em;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--red); }
+
+  .nav-cta {
+    background: var(--red); color: var(--white) !important;
+    padding: .55rem 1.3rem; border-radius: 50px;
+    font-weight: 700 !important; font-size: .82rem !important;
+    transition: background .2s, transform .15s !important;
+  }
+  .nav-cta:hover { background: var(--red-dark) !important; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 5vw 5rem;
+    position: relative;
+    overflow: hidden;
+    background: var(--off-white);
+  }
+
+  .hero-bg-kanji {
+    position: absolute; right: -2vw; top: 50%; transform: translateY(-50%);
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(200px, 28vw, 420px);
+    color: rgba(200,16,46,.06);
+    line-height: 1; pointer-events: none;
+    letter-spacing: -.05em;
+    user-select: none;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--red-light); color: var(--red);
+    padding: .4rem 1rem; border-radius: 50px;
+    font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; margin-bottom: 1.5rem;
+    animation: fadeUp .6s ease both;
+  }
+  .hero-badge::before { content: '●'; font-size: .5rem; animation: pulse 2s infinite; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: .3; }
+  }
+
+  .hero-content { max-width: 640px; position: relative; z-index: 2; }
+
+  h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -.03em;
+    animation: fadeUp .7s .1s ease both;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--red);
+    position: relative;
+  }
+  h1 em::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--red); border-radius: 2px;
+    transform: scaleX(0); transform-origin: left;
+    animation: underlineIn 1s .8s ease forwards;
+  }
+  @keyframes underlineIn { to { transform: scaleX(1); } }
+
+  .hero-sub {
+    margin-top: 1.4rem;
+    font-size: 1.05rem; color: var(--ink-mid); line-height: 1.7;
+    font-weight: 400;
+    animation: fadeUp .7s .2s ease both;
+  }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 2.5rem;
+    animation: fadeUp .7s .3s ease both;
+  }
+  .hero-stat strong {
+    display: block; font-size: 1.8rem; font-weight: 800;
+    color: var(--red);
+  }
+  .hero-stat span { font-size: .78rem; color: var(--ink-soft); font-weight: 500; }
+
+  .hero-ctas {
+    display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+    animation: fadeUp .7s .4s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--red); color: var(--white);
+    padding: .9rem 2rem; border-radius: 50px;
+    font-weight: 700; font-size: .9rem;
+    text-decoration: none; letter-spacing: .02em;
+    transition: background .2s, transform .15s, box-shadow .2s;
+    box-shadow: 0 8px 32px rgba(200,16,46,.25);
+  }
+  .btn-primary:hover {
+    background: var(--red-dark); transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(200,16,46,.35);
+  }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: transparent; color: var(--ink);
+    padding: .9rem 2rem; border-radius: 50px;
+    font-weight: 600; font-size: .9rem;
+    text-decoration: none;
+    border: 1.5px solid var(--border);
+    transition: border-color .2s, background .2s;
+  }
+  .btn-secondary:hover { border-color: var(--red); background: var(--red-light); color: var(--red); }
+
+  .hero-trust {
+    margin-top: 2.5rem; display: flex; align-items: center; gap: 1rem;
+    font-size: .8rem; color: var(--ink-soft);
+    animation: fadeUp .7s .5s ease both;
+  }
+  .hero-trust-avatars {
+    display: flex;
+  }
+  .avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--red) 0%, #ff6b6b 100%);
+    border: 2px solid white; margin-left: -8px; display: flex;
+    align-items: center; justify-content: center;
+    font-size: .7rem; font-weight: 700; color: white;
+  }
+  .avatar:first-child { margin-left: 0; }
+  .avatar:nth-child(2) { background: linear-gradient(135deg, #2563eb, #06b6d4); }
+  .avatar:nth-child(3) { background: linear-gradient(135deg, #7c3aed, #db2777); }
+  .avatar:nth-child(4) { background: linear-gradient(135deg, #059669, #10b981); }
+
+  /* ── FLAGS ── */
+  .flag-strip {
+    background: var(--white);
+    padding: 1.2rem 5vw;
+    display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    font-size: .8rem; color: var(--ink-soft); font-weight: 500;
+  }
+  .flag-strip .flags { font-size: 1.5rem; display: flex; gap: .5rem; }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 6rem 5vw; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .7rem; font-weight: 700; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 1rem;
+  }
+  .section-label::before { content: '—'; }
+
+  h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800; letter-spacing: -.03em; line-height: 1.15;
+  }
+
+  .section-intro { max-width: 560px; }
+  .section-intro p {
+    margin-top: 1rem; color: var(--ink-mid); line-height: 1.8; font-size: 1rem;
+  }
+
+  /* ── WHY US ── */
+  .why { background: var(--white); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem; margin-top: 3.5rem;
+  }
+  .why-card {
+    background: var(--off-white); border-radius: 20px;
+    padding: 2rem; border: 1px solid var(--border);
+    transition: transform .25s, box-shadow .25s;
+    position: relative; overflow: hidden;
+  }
+  .why-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.08); }
+  .why-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--red); transform: scaleX(0); transform-origin: left;
+    transition: transform .3s;
+  }
+  .why-card:hover::before { transform: scaleX(1); }
+  .why-icon {
+    font-size: 2rem; margin-bottom: 1rem; display: block;
+  }
+  .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+  .why-card p { font-size: .85rem; color: var(--ink-mid); line-height: 1.7; }
+
+  /* ── HOW IT WORKS ── */
+  .how { background: var(--ink); color: var(--white); }
+  .how .section-label { color: var(--gold); }
+  .how h2 { color: var(--white); }
+  .how-steps {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0; margin-top: 3.5rem; position: relative;
+  }
+  .how-steps::before {
+    content: '';
+    position: absolute; top: 2.2rem; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+  }
+  .step {
+    padding: 0 1.5rem 0 0; position: relative;
+  }
+  .step-num {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--red); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: .9rem; margin-bottom: 1.2rem;
+    position: relative; z-index: 1;
+  }
+  .step h3 { font-size: .95rem; font-weight: 700; margin-bottom: .5rem; }
+  .step p { font-size: .82rem; color: rgba(255,255,255,.6); line-height: 1.7; }
+  .step-time {
+    margin-top: .8rem; display: inline-flex; align-items: center; gap: .3rem;
+    font-size: .7rem; color: var(--gold); font-weight: 600;
+  }
+
+  /* ── SECTORS ── */
+  .sectors { background: var(--off-white); }
+  .sectors-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem; margin-top: 3rem;
+  }
+  .sector-chip {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.2rem 1rem;
+    text-align: center; transition: all .25s; cursor: default;
+  }
+  .sector-chip:hover {
+    border-color: var(--red); background: var(--red-light);
+    transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,16,46,.1);
+  }
+  .sector-chip .icon { font-size: 1.8rem; margin-bottom: .5rem; display: block; }
+  .sector-chip span { font-size: .78rem; font-weight: 600; color: var(--ink-mid); }
+  .sector-chip:hover span { color: var(--red); }
+
+  /* SECTOR MODAL */
+  .sector-modal-overlay {
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(0,0,0,.6); backdrop-filter: blur(4px);
+    display: none; align-items: center; justify-content: center;
+    padding: 1rem;
+  }
+  .sector-modal-overlay.active { display: flex; }
+  .sector-modal {
+    background: white; border-radius: 20px;
+    max-width: 480px; width: 100%; max-height: 85vh;
+    overflow-y: auto; position: relative;
+    box-shadow: 0 24px 80px rgba(0,0,0,.25);
+    animation: modalIn .3s ease;
+  }
+  @keyframes modalIn { from { opacity:0; transform:translateY(20px) scale(.96); } to { opacity:1; transform:none; } }
+  .modal-close {
+    position: absolute; top: 1rem; right: 1rem; z-index: 2;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--off-white); border: 1px solid var(--border);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: .9rem; color: var(--ink-mid); transition: all .2s;
+  }
+  .modal-close:hover { background: var(--red-light); color: var(--red); }
+  .modal-header {
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-header .icon { font-size: 2rem; margin-bottom: .5rem; display: block; }
+  .modal-header h3 { font-size: 1.1rem; font-weight: 800; }
+  .modal-header .jp-name { font-family: 'Noto Serif JP', serif; font-size: .8rem; color: var(--ink-soft); }
+  .modal-body { padding: 1.2rem 1.5rem 1.5rem; }
+  .modal-stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: .6rem;
+    margin-bottom: 1rem;
+  }
+  .modal-stat {
+    background: var(--off-white); border-radius: 10px; padding: .7rem;
+    text-align: center;
+  }
+  .modal-stat strong { display: block; font-size: 1rem; color: var(--red); font-weight: 800; }
+  .modal-stat span { font-size: .65rem; color: var(--ink-soft); }
+  .modal-desc { font-size: .82rem; color: var(--ink-mid); line-height: 1.8; margin-bottom: 1rem; }
+  .modal-skill-label { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-soft); margin-bottom: .4rem; }
+  .modal-skill-list { list-style: none; }
+  .modal-skill-list li {
+    display: flex; align-items: center; gap: .5rem;
+    padding: .3rem 0; font-size: .8rem; color: var(--ink-mid);
+  }
+  .modal-skill-list li::before { content: '✓'; color: var(--red); font-weight: 700; font-size: .7rem; }
+  .modal-cta {
+    display: block; width: 100%; text-align: center;
+    background: var(--red); color: white; border: none;
+    padding: .8rem; border-radius: 50px; font-weight: 700;
+    font-size: .85rem; font-family: inherit; cursor: pointer;
+    margin-top: 1rem; transition: background .2s;
+    text-decoration: none;
+  }
+  .modal-cta:hover { background: var(--red-dark); }
+
+  /* ── STICKY CTA BAR ── */
+  .sticky-cta {
+    position: fixed; bottom: -60px; left: 0; right: 0; z-index: 90;
+    background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    padding: .6rem 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: bottom .4s ease;
+    box-shadow: 0 -4px 24px rgba(0,0,0,.08);
+  }
+  .sticky-cta.visible { bottom: 0; }
+  .sticky-cta-text { font-size: .78rem; font-weight: 600; color: var(--ink-mid); }
+  .sticky-cta-text strong { color: var(--red); }
+  .sticky-cta a {
+    background: var(--red); color: white; padding: .5rem 1.2rem;
+    border-radius: 50px; font-size: .78rem; font-weight: 700;
+    text-decoration: none; white-space: nowrap;
+    transition: background .2s, transform .15s;
+  }
+  .sticky-cta a:hover { background: var(--red-dark); transform: translateY(-1px); }
+  @media (max-width: 768px) {
+    .sticky-cta-text { display: none; }
+    .sticky-cta { justify-content: center; }
+    .sticky-cta a { width: 100%; text-align: center; }
+  }
+
+  /* Counter animations for hero stats */
+  .hero-stat strong {
+    display: block; font-size: 1.8rem; font-weight: 800;
+    color: var(--red);
+    transition: transform .3s;
+  }
+  .hero-stat:hover strong { transform: scale(1.05); }
+
+  .salary-bar {
+    margin-top: 3rem; background: var(--red); border-radius: 20px;
+    padding: 2rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .salary-bar p { color: rgba(255,255,255,.85); font-size: .9rem; font-weight: 500; }
+  .salary-bar strong {
+    display: block; color: white; font-size: 1.9rem; font-weight: 800;
+    letter-spacing: -.03em;
+  }
+  .salary-bar .pill {
+    background: rgba(255,255,255,.15); border-radius: 50px;
+    padding: .3rem .9rem; font-size: .75rem; color: white; font-weight: 600;
+  }
+
+  /* ── REQUIREMENTS ── */
+  .reqs { background: var(--white); }
+  .reqs-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+  .req-group h3 {
+    font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 1.2rem;
+  }
+  .req-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: .8rem 0; border-bottom: 1px solid var(--border);
+  }
+  .req-item:last-child { border-bottom: none; }
+  .req-check {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--red-light); color: var(--red);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .65rem; font-weight: 900; flex-shrink: 0; margin-top: 1px;
+  }
+  .req-item p { font-size: .88rem; color: var(--ink-mid); line-height: 1.6; }
+
+  /* ── FAQ ── */
+  .faq { background: var(--off-white); }
+  .faq-grid { max-width: 780px; margin: 3rem auto 0; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.3rem 0; cursor: pointer;
+    font-weight: 600; font-size: .95rem;
+    user-select: none;
+    transition: color .2s;
+    gap: 1rem;
+  }
+  .faq-q:hover { color: var(--red); }
+  .faq-icon {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--white); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .8rem; flex-shrink: 0;
+    transition: background .2s, transform .3s;
+  }
+  .faq-item.open .faq-icon { background: var(--red); color: white; transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    font-size: .88rem; color: var(--ink-mid); line-height: 1.8;
+    transition: max-height .4s ease, padding .3s;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding-bottom: 1.2rem; }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    background: var(--red);
+    padding: 6rem 5vw;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: '特定技能';
+    position: absolute; bottom: -1rem; right: -2rem;
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(80px, 15vw, 180px);
+    color: rgba(255,255,255,.06);
+    pointer-events: none; user-select: none;
+    line-height: 1;
+  }
+  .cta-section h2 { color: white; font-size: clamp(1.8rem, 3.5vw, 3rem); }
+  .cta-section p { color: rgba(255,255,255,.8); margin-top: 1rem; font-size: 1rem; max-width: 480px; margin-inline: auto; }
+
+  /* ── FORM ── */
+  .form-card {
+    background: white; border-radius: 24px;
+    padding: 2.5rem; max-width: 560px; margin: 3rem auto 0;
+    box-shadow: 0 24px 80px rgba(0,0,0,.2);
+    text-align: left;
+  }
+  .form-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--ink); }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: .4rem; }
+  .form-group.full { grid-column: 1 / -1; }
+  label { font-size: .78rem; font-weight: 600; color: var(--ink-mid); letter-spacing: .02em; }
+  input, select, textarea {
+    border: 1.5px solid var(--border); border-radius: 10px;
+    padding: .75rem 1rem; font-size: .88rem; font-family: inherit;
+    color: var(--ink); background: var(--off-white);
+    transition: border-color .2s, box-shadow .2s;
+    outline: none; width: 100%;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(200,16,46,.08);
+  }
+  textarea { resize: vertical; min-height: 80px; }
+  .form-submit {
+    width: 100%; margin-top: 1.2rem;
+    background: var(--red); color: white;
+    border: none; border-radius: 50px; cursor: pointer;
+    padding: 1rem; font-size: .95rem; font-weight: 700;
+    font-family: inherit; letter-spacing: .02em;
+    transition: background .2s, transform .15s;
+  }
+  .form-submit:hover { background: var(--red-dark); transform: translateY(-1px); }
+  .spinner {
+    display: inline-block; width: 16px; height: 16px;
+    border: 2px solid rgba(255,255,255,.3); border-top-color: #fff;
+    border-radius: 50%; animation: spin .6s linear infinite;
+    vertical-align: middle; margin-right: .4rem;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .form-note {
+    text-align: center; margin-top: .8rem;
+    font-size: .72rem; color: var(--ink-soft);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,.6);
+    padding: 3rem 5vw; font-size: .8rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer strong { color: white; }
+  .footer-jp { font-family: 'Noto Serif JP', serif; color: var(--red); font-size: 1rem; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .7s ease, transform .7s ease;
+    will-change: opacity, transform;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); will-change: auto; }
+
+  /* Performance: lazy render below-fold sections */
+  .sectors, .reqs, .faq, .cta-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
+  }
+
+  /* ── WHATSAPP FLOAT ── */
+  .wa-float {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 32px rgba(37,211,102,.4);
+    text-decoration: none; font-size: 1.6rem;
+    transition: transform .2s, box-shadow .2s;
+    animation: waBounce 2s 2s ease infinite;
+  }
+  .wa-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 40px rgba(37,211,102,.5);
+    animation: none;
+  }
+  @keyframes waBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* ── QUIZ ── */
+  .quiz-step { display: none; }
+  .quiz-step.active { display: block; animation: fadeUp .4s ease; }
+  .quiz-opt {
+    display: block; width: 100%; text-align: left;
+    padding: .75rem 1rem; border-radius: 10px;
+    border: 1.5px solid var(--border); background: var(--off-white);
+    font-size: .85rem; font-weight: 500; font-family: inherit;
+    color: var(--ink); cursor: pointer; transition: all .2s;
+  }
+  .quiz-opt:hover { border-color: var(--red); background: var(--red-light); color: var(--red); }
+  .quiz-progress {
+    display: flex; gap: .3rem; margin-bottom: 1rem;
+  }
+  .quiz-progress-dot {
+    flex: 1; height: 3px; border-radius: 2px; background: var(--border);
+    transition: background .3s;
+  }
+  .quiz-progress-dot.filled { background: var(--red); }
+
+  /* ── HAMBURGER MENU ── */
+  .hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    width: 44px; height: 44px; position: relative; z-index: 110;
+    flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 2px; background: var(--ink);
+    border-radius: 2px; transition: all .3s;
+  }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 105;
+    background: rgba(255,255,255,.97); backdrop-filter: blur(16px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
+    transform: translateX(100%); transition: transform .35s ease;
+  }
+  .mobile-menu.active { transform: translateX(0); }
+  .mobile-menu a {
+    text-decoration: none; color: var(--ink); font-size: 1.1rem;
+    font-weight: 600; letter-spacing: .02em; padding: .5rem 1rem;
+    transition: color .2s;
+  }
+  .mobile-menu a:hover { color: var(--red); }
+  .mobile-menu .nav-cta {
+    background: var(--red); color: var(--white) !important;
+    padding: .7rem 2rem; border-radius: 50px; font-weight: 700;
+    margin-top: .5rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-stats { gap: 1.2rem; }
+    .hero-stat strong { font-size: 1.4rem; }
+    .how-steps { grid-template-columns: 1fr; }
+    .how-steps::before { display: none; }
+    .step { padding: 0 0 1rem 0; border-left: 2px solid rgba(255,255,255,.1); padding-left: 1.2rem; margin-left: 22px; }
+    .step-num { position: absolute; left: -23px; width: 38px; height: 38px; font-size: .8rem; }
+    .reqs-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .form-grid { grid-template-columns: 1fr; }
+    .hero-bg-kanji { font-size: 35vw; right: -5vw; opacity: .3; }
+    .sector-chip { min-height: 90px; padding: 1rem .8rem; }
+    .faq-q { padding: 1rem 0; min-height: 48px; }
+    .sectors-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+    .sector-modal { max-height: 90vh; border-radius: 16px 16px 0 0; }
+    .modal-stat-grid { grid-template-columns: 1fr 1fr; gap: .4rem; }
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    nav, .wa-float, .sticky-cta, .hamburger, .mobile-menu,
+    .sector-modal-overlay, .hero-badge, #quizCard { display: none !important; }
+    body::before { display: none; }
+    .hero { min-height: auto; padding: 2rem; }
+    section { padding: 2rem; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    * { -webkit-print-color-adjust: exact !important; color-adjust: exact !important; }
+    @page { margin: 12mm; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SKIP LINK -->
+<a href="#daftar" class="skip-link" style="position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;padding:.6rem 1.2rem;border-radius:0 0 8px 8px;font-weight:700;font-size:.85rem;z-index:9999;transition:top .2s;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Langsung ke Pendaftaran →</a>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-jp">特定</span>
+    <div class="nav-logo-text">
+      <span>Mandiri Tokutei Ginou</span>
+      <span>Platform Kerja Mandiri ke Jepang</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#cara-kerja">Cara Kerja</a>
+    <a href="#sektor">Sektor Kerja</a>
+    <a href="#syarat">Syarat</a>
+    <a href="#faq">FAQ</a>
+    <button onclick="toggleLang()" style="background:none;border:1px solid var(--border);border-radius:6px;padding:.3rem .6rem;cursor:pointer;font-size:.72rem;font-weight:600;font-family:inherit;color:var(--ink-mid);transition:all .2s" id="langToggle" title="Switch language">🇯🇵 日本語</button>
+    <a href="#daftar" class="nav-cta">Daftar Sekarang →</a>
+  </div>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu navigasi" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#cara-kerja" onclick="toggleMobileMenu()">Cara Kerja</a>
+  <a href="#sektor" onclick="toggleMobileMenu()">14 Sektor</a>
+  <a href="#syarat" onclick="toggleMobileMenu()">Syarat</a>
+  <a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
+  <a href="#daftar" class="nav-cta" onclick="toggleMobileMenu()">Daftar Sekarang →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-kanji">特定技能</div>
+  <div class="hero-content">
+    <div class="hero-badge">🇮🇩 → 🇯🇵 &nbsp; Platform Resmi Tokutei Ginou</div>
+    <h1>Kerja di <em>Jepang</em><br>Secara Mandiri,<br>Tanpa Calo</h1>
+    <p class="hero-sub">
+      Platform yang membantu tenaga kerja Indonesia meraih visa <strong>Specified Skilled Worker (Tokutei Ginou)</strong> secara mandiri — dengan panduan lengkap, tools persiapan, dan pendampingan transparan tanpa biaya tersembunyi.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong>14</strong>
+        <span>Sektor Kerja</span>
+      </div>
+      <div class="hero-stat">
+        <strong>Rp 15–25 Jt</strong>
+        <span>Gaji/Bulan</span>
+      </div>
+      <div class="hero-stat">
+        <strong>5 Th</strong>
+        <span>Visa Kerja</span>
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#daftar" class="btn-primary">Daftar Konsultasi Gratis →</a>
+      <a href="#cara-kerja" class="btn-secondary">Lihat Prosesnya</a>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-trust-avatars">
+        <div class="avatar">AR</div>
+        <div class="avatar">DS</div>
+        <div class="avatar">FN</div>
+        <div class="avatar">+</div>
+      </div>
+      <span><strong id="lead-counter" style="color:var(--red)">0</strong> kandidat sudah mendaftar via platform</span>
+    </div>
+  </div>
+</section>
+
+<!-- FLAG STRIP -->
+<div class="flag-strip">
+  <div class="flags">🇮🇩 🤝 🇯🇵</div>
+  <span>Program resmi — perjanjian bilateral RI–Jepang (MOC SSW 25 Juni 2019)</span>
+</div>
+
+<!-- SOCIAL PROOF / TESTIMONIALS -->
+<section style="padding:3rem 5vw;background:var(--white);border-bottom:1px solid var(--border)">
+  <div style="text-align:center;margin-bottom:2rem" class="reveal">
+    <div class="section-label" style="justify-content:center">Cerita Mereka</div>
+    <h2 style="font-size:clamp(1.4rem,3vw,2rem)">Apa Kata Kandidat Kami</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem">
+    <div class="reveal" style="background:var(--off-white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;position:relative">
+      <div style="font-size:2rem;color:var(--red);opacity:.2;position:absolute;top:.8rem;left:1rem;font-family:serif">"</div>
+      <p style="font-size:.85rem;color:var(--ink-mid);line-height:1.8;margin-bottom:1rem;padding-top:.5rem">Awalnya saya takut kena calo. Lewat Mandiri TG, semua prosesnya jelas dan saya bisa track progress sendiri. Sekarang sudah 8 bulan kerja di pabrik makanan di Nagoya!</p>
+      <div style="display:flex;align-items:center;gap:.6rem">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--red),#ff6b6b);display:flex;align-items:center;justify-content:center;color:white;font-size:.7rem;font-weight:700">AR</div>
+        <div><div style="font-size:.78rem;font-weight:700">Andi R.</div><div style="font-size:.65rem;color:var(--ink-soft)">Sektor Makanan · Nagoya · 2025</div></div>
+      </div>
+    </div>
+    <div class="reveal" style="background:var(--off-white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;position:relative">
+      <div style="font-size:2rem;color:var(--red);opacity:.2;position:absolute;top:.8rem;left:1rem;font-family:serif">"</div>
+      <p style="font-size:.85rem;color:var(--ink-mid);line-height:1.8;margin-bottom:1rem;padding-top:.5rem">Saya lulusan SMK yang tadinya bingung cari kerja. Dalam 5 bulan, saya sudah berangkat ke Jepang sektor konstruksi. Gajinya 3x lipat dari Indonesia!</p>
+      <div style="display:flex;align-items:center;gap:.6rem">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-size:.7rem;font-weight:700">DS</div>
+        <div><div style="font-size:.78rem;font-weight:700">Dewi S.</div><div style="font-size:.65rem;color:var(--ink-soft)">Sektor Konstruksi · Tokyo · 2025</div></div>
+      </div>
+    </div>
+    <div class="reveal" style="background:var(--off-white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;position:relative">
+      <div style="font-size:2rem;color:var(--red);opacity:.2;position:absolute;top:.8rem;left:1rem;font-family:serif">"</div>
+      <p style="font-size:.85rem;color:var(--ink-mid);line-height:1.8;margin-bottom:1rem;padding-top:.5rem">Yang bikin beda dari agen lain: mereka kasih akses belajar bahasa Jepang gratis. Jadi waktu sampai Jepang, saya sudah bisa percakapan dasar. Sangat membantu!</p>
+      <div style="display:flex;align-items:center;gap:.6rem">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#059669,#10b981);display:flex;align-items:center;justify-content:center;color:white;font-size:.7rem;font-weight:700">FN</div>
+        <div><div style="font-size:.78rem;font-weight:700">Fajar N.</div><div style="font-size:.65rem;color:var(--ink-soft)">Sektor Kaigo · Osaka · 2026</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why">
+  <div class="section-intro reveal">
+    <div class="section-label">Mengapa Mandiri TG</div>
+    <h2>Siap Kerja di Jepang<br>Tanpa Calo Mahal</h2>
+    <p>Mandiri Tokutei Ginou adalah platform self-service yang membantu kamu mempersiapkan diri secara mandiri — dengan tools, panduan, dan pendampingan di setiap langkah.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <span class="why-icon" aria-hidden="true">🛡️</span>
+      <h3>100% Legal & Transparan</h3>
+      <p>Proses sesuai regulasi Indonesia (UU 18/2017) dan Jepang. Jalur resmi, bukan lewat calo — zero risiko deportasi.</p>
+    </div>
+    <div class="why-card reveal">
+      <span class="why-icon" aria-hidden="true">🎯</span>
+      <h3>Platform Self-Service</h3>
+      <p>Akses tools persiapan: latihan JLPT N5-N4, generator CV (履歴書), simulasi tes skill, dan panduan dokumen — kapan saja, dari HP kamu.</p>
+    </div>
+    <div class="why-card reveal">
+      <span class="why-icon" aria-hidden="true">💰</span>
+      <h3>Biaya Jauh Lebih Hemat</h3>
+      <p>Tanpa markup calo yang bisa mencapai Rp 30-50 juta. Kamu bayar hanya untuk layanan yang benar-benar kamu butuhkan.</p>
+    </div>
+    <div class="why-card reveal">
+      <span class="why-icon" aria-hidden="true">🤝</span>
+      <h3>Didampingi, Bukan Diurus</h3>
+      <p>Kami membimbing kamu agar paham prosesnya sendiri — bukan sekadar "diurus". Kamu yang pegang kendali, kami yang bantu arahkan.</p>
+    </div>
+    <div class="why-card reveal">
+      <span class="why-icon" aria-hidden="true">📱</span>
+      <h3>Update Real-Time via WhatsApp</h3>
+      <p>Notifikasi otomatis di setiap tahap proses lewat 25 WhatsApp Channel khusus per sektor dan topik.</p>
+    </div>
+    <div class="why-card reveal">
+      <span class="why-icon" aria-hidden="true">🎓</span>
+      <h3>Persiapan Bahasa & Skill</h3>
+      <p>Materi JLPT N5–N4, kosakata kerja per sektor, dan simulasi tes skill — semuanya gratis di platform kami.</p>
+    </div>
+  </div>
+
+  <!-- COMPARISON: Calo vs Mandiri -->
+  <div class="reveal" style="margin-top:3rem;background:var(--off-white);border:1px solid var(--border);border-radius:20px;overflow:hidden">
+    <div style="padding:1.5rem 2rem;background:var(--ink);color:white;text-align:center">
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.4rem">PERBANDINGAN</div>
+      <div style="font-size:1.1rem;font-weight:800">Lewat Calo vs. Mandiri Tokutei Ginou</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;font-size:.82rem">
+      <div style="padding:1rem 1.5rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);font-weight:700;color:var(--ink-soft);text-align:center;background:var(--off-white)">❌ Via Calo / Agen Mahal</div>
+      <div style="padding:1rem 1.5rem;border-bottom:1px solid var(--border);font-weight:700;color:var(--red);text-align:center;background:var(--red-light)">✅ Via Mandiri TG</div>
+
+      <div style="padding:.8rem 1.5rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);color:var(--ink-mid)">Biaya Rp 30–50 juta (markup tinggi)</div>
+      <div style="padding:.8rem 1.5rem;border-bottom:1px solid var(--border);color:var(--ink)"><strong>Biaya transparan, tanpa markup</strong></div>
+
+      <div style="padding:.8rem 1.5rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);color:var(--ink-mid)">Proses tidak jelas, sering ditunda</div>
+      <div style="padding:.8rem 1.5rem;border-bottom:1px solid var(--border);color:var(--ink)"><strong>Tracking real-time via WhatsApp</strong></div>
+
+      <div style="padding:.8rem 1.5rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);color:var(--ink-mid)">Tidak paham proses sendiri</div>
+      <div style="padding:.8rem 1.5rem;border-bottom:1px solid var(--border);color:var(--ink)"><strong>Kamu paham & pegang kendali</strong></div>
+
+      <div style="padding:.8rem 1.5rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);color:var(--ink-mid)">Risiko penipuan & ilegal</div>
+      <div style="padding:.8rem 1.5rem;border-bottom:1px solid var(--border);color:var(--ink)"><strong>100% legal sesuai UU 18/2017</strong></div>
+
+      <div style="padding:.8rem 1.5rem;border-right:1px solid var(--border);color:var(--ink-mid)">Tidak ada persiapan bahasa/skill</div>
+      <div style="padding:.8rem 1.5rem;color:var(--ink)"><strong>JLPT prep + simulasi skill gratis</strong></div>
+    </div>
+  </div>
+
+</section>
+<section class="how" id="cara-kerja">
+  <div class="section-intro reveal">
+    <div class="section-label">Cara Kerja</div>
+    <h2>Dari Daftar<br>Hingga Berangkat</h2>
+    <p style="color:rgba(255,255,255,.6)">Prosesnya sistematis dan transparan. Rata-rata kandidat berangkat dalam 4–8 bulan.</p>
+  </div>
+  <div class="how-steps">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <h3>Pendaftaran & Konsultasi</h3>
+      <p>Isi form pendaftaran. Tim kami menghubungi dalam 24 jam untuk konsultasi gratis.</p>
+      <div class="step-time">📅 H+1</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">2</div>
+      <h3>Seleksi Dokumen</h3>
+      <p>Kumpulkan KTP, ijazah, dan foto. Kami verifikasi kelengkapan dan validitas dokumen kamu.</p>
+      <div class="step-time">📅 H+7</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">3</div>
+      <h3>Tes Bahasa & Skill</h3>
+      <p>Ikuti tes bahasa Jepang (N5/N4) dan tes skill sektor yang kamu minati.</p>
+      <div class="step-time">📅 Minggu 3-6</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">4</div>
+      <h3>Matching Employer</h3>
+      <p>Kami cocokkan profil kamu dengan employer Jepang dan fasilitasi interview via Zoom.</p>
+      <div class="step-time">📅 Bulan 2-3</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">5</div>
+      <h3>Pengurusan Visa & Dokumen</h3>
+      <p>Kami urus Certificate of Eligibility (CoE), visa SSW, dan semua dokumen keberangkatan.</p>
+      <div class="step-time">📅 Bulan 3-5</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">6</div>
+      <h3>Berangkat ke Jepang 🎉</h3>
+      <p>Orientasi akhir, briefing budaya Jepang, lalu kamu siap memulai hidup baru di Jepang!</p>
+      <div class="step-time">📅 Bulan 4-8</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="sectors" id="sektor">
+  <div class="section-intro reveal">
+    <div class="section-label">Sektor Tersedia</div>
+    <h2>14 Sektor Resmi<br>Tokutei Ginou</h2>
+    <p>Pilih sektor yang sesuai dengan latar belakang dan minatmu. Kami akan mempersiapkan kamu dari nol.</p>
+  </div>
+  <div class="sectors-grid">
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Perawatan Lansia" data-jp="介護 (Kaigo)" data-salary="Rp 16–22 Jt" data-demand="Sangat Tinggi" data-desc="Merawat lansia di panti jompo, rumah sakit, dan home care. Jepang butuh 690.000+ pekerja kaigo hingga 2040." data-skills="Perawatan dasar (makan, mandi, mobilitas)|Komunikasi empatik Bahasa Jepang|Pencatatan kondisi kesehatan|Penanganan darurat dasar" style="cursor:pointer"><span class="icon">👴</span><span>Perawatan Lansia (介護)</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Kebersihan Gedung" data-jp="ビルクリーニング" data-salary="Rp 15–19 Jt" data-demand="Tinggi" data-desc="Pembersihan gedung perkantoran, hotel, rumah sakit. Standar kebersihan Jepang sangat tinggi." data-skills="Mesin pembersih industri|Bahan kimia pembersih|Manajemen waktu & checklist|Standar hygiene Jepang" style="cursor:pointer"><span class="icon">🧹</span><span>Kebersihan Gedung</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Pengolahan Material" data-jp="素形材産業" data-salary="Rp 17–24 Jt" data-demand="Tinggi" data-desc="Pengecoran logam, pengelasan, pelapisan, pemrosesan plastik di pabrik manufaktur Jepang." data-skills="Operasi mesin CNC & forging|Pengelasan MIG/TIG/Arc|Quality control & pengukuran|Keselamatan kerja pabrik" style="cursor:pointer"><span class="icon">⚙️</span><span>Pengolahan Material</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Mesin Industri" data-jp="産業機械製造業" data-salary="Rp 17–25 Jt" data-demand="Tinggi" data-desc="Pembuatan, perakitan, dan perawatan mesin industri untuk manufaktur." data-skills="Technical drawing|Perakitan komponen presisi|Mesin bubut/frais|Troubleshooting mekanis" style="cursor:pointer"><span class="icon">🏭</span><span>Mesin Industri</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Elektronik & IT" data-jp="電気・電子情報関連" data-salary="Rp 18–26 Jt" data-demand="Sangat Tinggi" data-desc="Perakitan, pengujian komponen elektronik, semikonduktor, dan perangkat IT." data-skills="Soldering & PCB assembly|Pengujian elektronik|Rangkaian dasar|Cleanroom protocol" style="cursor:pointer"><span class="icon">💡</span><span>Elektronik & IT</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Konstruksi" data-jp="建設 (Kensetsu)" data-salary="Rp 18–28 Jt" data-demand="Sangat Tinggi" data-desc="Beton, pengelasan, scaffolding, finishing bangunan. Demand tinggi karena proyek infrastruktur besar." data-skills="Pengecoran & finishing beton|Pengelasan konstruksi|Pemasangan scaffolding|Safety konstruksi Jepang" style="cursor:pointer"><span class="icon">🏗️</span><span>Konstruksi</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Pembuatan Kapal" data-jp="造船・舶用工業" data-salary="Rp 18–26 Jt" data-demand="Sedang" data-desc="Pembangunan dan perawatan kapal di galangan. Pengelasan, pengecatan, pemasangan pipa." data-skills="Pengelasan struktur kapal|Blueprint kapal|Pengecatan marine-grade|Pipa & fitting" style="cursor:pointer"><span class="icon">🚢</span><span>Pembuatan Kapal</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Perawatan Otomotif" data-jp="自動車整備" data-salary="Rp 17–24 Jt" data-demand="Tinggi" data-desc="Perawatan, perbaikan, inspeksi kendaraan di bengkel resmi Jepang (shaken system)." data-skills="Diagnostik OBD|Servis berkala & shaken|Rem & suspensi|Safety kendaraan Jepang" style="cursor:pointer"><span class="icon">🚗</span><span>Perawatan Otomotif</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Penerbangan" data-jp="航空 (Kōkū)" data-salary="Rp 19–28 Jt" data-demand="Sedang" data-desc="Ground handling, perawatan pesawat, operasi bandara. Sektor terbaru SSW." data-skills="Aircraft maintenance dasar|Ground handling|Baggage & cargo|Aviation safety" style="cursor:pointer"><span class="icon">✈️</span><span>Penerbangan</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Perhotelan" data-jp="宿泊 (Shukuhaku)" data-salary="Rp 16–22 Jt" data-demand="Tinggi" data-desc="Front desk, housekeeping, F&B di hotel dan ryokan. Budaya omotenashi." data-skills="Front desk & reservasi|Housekeeping standar Jepang|Omotenashi|Bahasa Jepang N4+" style="cursor:pointer"><span class="icon">🏨</span><span>Perhotelan</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Pertanian" data-jp="農業 (Nōgyō)" data-salary="Rp 15–20 Jt" data-demand="Tinggi" data-desc="Budidaya tanaman, peternakan, pengolahan hasil pertanian di pedesaan Jepang." data-skills="Budidaya sayur/buah|Traktor & mesin pertanian|Quality sorting|Peternakan dasar" style="cursor:pointer"><span class="icon">🌾</span><span>Pertanian</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Perikanan" data-jp="漁業 (Gyogyō)" data-salary="Rp 16–23 Jt" data-demand="Sedang" data-desc="Penangkapan ikan, budidaya laut, pengolahan hasil perikanan." data-skills="Teknik penangkapan ikan|Budidaya kerang/rumput laut|Pengolahan & pengemasan|Navigasi kapal" style="cursor:pointer"><span class="icon">🐟</span><span>Perikanan & Akuakultur</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Industri Makanan" data-jp="飲食料品製造業" data-salary="Rp 15–21 Jt" data-demand="Sangat Tinggi" data-desc="Produksi makanan/minuman di pabrik: bento, roti, frozen food. Demand tertinggi." data-skills="HACCP & food safety|Mesin produksi|Quality control makanan|Hygiene & sanitasi" style="cursor:pointer"><span class="icon">🍳</span><span>Industri Makanan & Minuman</span></div>
+    <div class="sector-chip reveal" onclick="openSector(this)" data-name="Restoran" data-jp="外食 (Gaishoku)" data-salary="Rp 15–21 Jt" data-demand="Sangat Tinggi" data-desc="Memasak, menyajikan, melayani tamu di restoran dan izakaya Jepang." data-skills="Masakan Jepang dasar|Table service & omotenashi|Kasir & POS system|Food hygiene certification" style="cursor:pointer"><span class="icon">🍽️</span><span>Restoran (外食)</span></div>
+  </div>
+
+  <!-- SECTOR DETAIL MODAL -->
+  <div class="sector-modal-overlay" id="sectorModal" onclick="if(event.target===this)closeSector()">
+    <div class="sector-modal">
+      <button class="modal-close" onclick="closeSector()" aria-label="Tutup">&times;</button>
+      <div class="modal-header" style="padding:1.5rem 1.5rem 1rem;border-bottom:1px solid var(--border)">
+        <span id="m-icon" style="font-size:2rem;display:block;margin-bottom:.5rem"></span>
+        <h3 id="m-name" style="font-size:1.1rem;font-weight:800"></h3>
+        <div id="m-jp" style="font-family:'Noto Serif JP',serif;font-size:.8rem;color:var(--ink-soft)"></div>
+      </div>
+      <div class="modal-body" style="padding:1.2rem 1.5rem 1.5rem">
+        <div class="modal-stat-grid"><div class="modal-stat"><strong id="m-salary"></strong><span>Gaji/Bulan</span></div><div class="modal-stat"><strong id="m-demand"></strong><span>Level Demand</span></div></div>
+        <p class="modal-desc" id="m-desc"></p>
+        <div class="modal-skill-label">Skill yang Dibutuhkan</div>
+        <ul class="modal-skill-list" id="m-skills"></ul>
+        <a class="modal-cta" id="m-cta" href="#" target="_blank" rel="noopener">Chat WhatsApp — Tanya Sektor Ini →</a>
+      </div>
+    </div>
+  </div>
+  <div class="salary-bar reveal">
+    <div>
+      <strong>Rp 15.000.000 – Rp 25.000.000</strong>
+      <p>Estimasi gaji bulanan TKI Jepang via Tokutei Ginou (belum termasuk lembur)</p>
+    </div>
+    <div style="display:flex; gap:.7rem; flex-wrap:wrap">
+      <div class="pill">✓ Asuransi kesehatan</div>
+      <div class="pill">✓ Bonus & lembur</div>
+      <div class="pill">✓ Perumahan disediakan</div>
+    </div>
+  </div>
+
+  <!-- WA CHANNEL CTA -->
+  <div class="reveal" style="margin-top:2rem;background:var(--white);border:1px solid var(--border);border-radius:20px;padding:1.5rem 2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
+    <div style="flex:1;min-width:200px">
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">📱 25 WhatsApp Channel</div>
+      <div style="font-size:1rem;font-weight:800;line-height:1.3">Ikuti Channel WA Sesuai Sektor & Minatmu</div>
+      <div style="font-size:.82rem;color:var(--ink-mid);margin-top:.4rem;line-height:1.7">Update info lowongan, tips bahasa Jepang, dan promo eksklusif langsung di WhatsApp — per sektor kerja.</div>
+    </div>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <a href="https://wa.me/628074181493?text=Halo%2C%20saya%20ingin%20join%20WA%20Channel%20sektor%20Kaigo" target="_blank" rel="noopener" style="background:var(--red-light);color:var(--red);padding:.4rem .8rem;border-radius:50px;font-size:.72rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:all .2s">👴 Kaigo</a>
+      <a href="https://wa.me/628074181493?text=Halo%2C%20saya%20ingin%20join%20WA%20Channel%20sektor%20Konstruksi" target="_blank" rel="noopener" style="background:var(--red-light);color:var(--red);padding:.4rem .8rem;border-radius:50px;font-size:.72rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:all .2s">🏗️ Konstruksi</a>
+      <a href="https://wa.me/628074181493?text=Halo%2C%20saya%20ingin%20join%20WA%20Channel%20sektor%20Restoran" target="_blank" rel="noopener" style="background:var(--red-light);color:var(--red);padding:.4rem .8rem;border-radius:50px;font-size:.72rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:all .2s">🍽️ Restoran</a>
+      <a href="https://wa.me/628074181493?text=Halo%2C%20saya%20ingin%20join%20WA%20Channel%20info%20umum" target="_blank" rel="noopener" style="background:var(--red-light);color:var(--red);padding:.4rem .8rem;border-radius:50px;font-size:.72rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:all .2s">📢 Info Umum</a>
+      <a href="https://wa.me/628074181493?text=Halo%2C%20saya%20ingin%20join%20WA%20Channel%20Bahasa%20Jepang" target="_blank" rel="noopener" style="background:var(--red-light);color:var(--red);padding:.4rem .8rem;border-radius:50px;font-size:.72rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:all .2s">🇯🇵 Bahasa JP</a>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="reqs" id="syarat">
+  <div class="section-intro reveal">
+    <div class="section-label">Persyaratan</div>
+    <h2>Apakah Kamu<br>Memenuhi Syarat?</h2>
+    <p>Persyaratan program Tokutei Ginou dirancang untuk memberikan kesempatan seluas mungkin bagi tenaga kerja Indonesia.</p>
+  </div>
+  <div class="reqs-layout">
+    <div class="req-group reveal">
+      <h3>✅ Syarat Umum</h3>
+      <div class="req-item">
+        <div class="req-check">✓</div>
+        <p>Warga Negara Indonesia (WNI), usia 18–39 tahun</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">✓</div>
+        <p>Pendidikan minimal SMA/SMK sederajat</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">✓</div>
+        <p>Sehat jasmani dan rohani (surat dokter)</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">✓</div>
+        <p>Tidak sedang terikat kontrak kerja lain</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">✓</div>
+        <p>Bersedia ditempatkan sesuai sektor yang dipilih</p>
+      </div>
+    </div>
+    <div class="req-group reveal">
+      <h3>📋 Dokumen Dibutuhkan</h3>
+      <div class="req-item">
+        <div class="req-check">✓</div>
+        <p>KTP yang masih berlaku</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">✓</div>
+        <p>Ijazah terakhir (SMA/D3/S1)</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">✓</div>
+        <p>Pas foto 4×6 background merah</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">✓</div>
+        <p>Paspor (jika belum punya, kami bantu urus)</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">✓</div>
+        <p>Sertifikat skill/pengalaman kerja (jika ada)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-intro reveal" style="margin-inline:auto; text-align:center; max-width:600px;">
+    <div class="section-label">FAQ</div>
+    <h2>Pertanyaan yang<br>Sering Ditanyakan</h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">Apakah saya harus bisa bahasa Jepang untuk mendaftar? <div class="faq-icon">+</div></div>
+      <div class="faq-a">Tidak harus! Beberapa sektor seperti pertanian dan manufaktur tidak mewajibkan kemampuan bahasa Jepang. Kami juga menyediakan kelas persiapan bahasa Jepang N5/N4 sebagai bagian dari program kami.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Berapa biaya total yang perlu saya siapkan? <div class="faq-icon">+</div></div>
+      <div class="faq-a">Biaya program terdiri dari biaya pendaftaran (Rp 750.000), biaya pelatihan (Rp 3–8 juta tergantung paket), dan fee penempatan (Rp 10–20 juta). Semua biaya dijelaskan transparan di awal dan dapat diangsur. Tidak ada biaya tersembunyi.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Berapa lama proses dari daftar hingga berangkat? <div class="faq-icon">+</div></div>
+      <div class="faq-a">Rata-rata 4–8 bulan tergantung kelengkapan dokumen, hasil tes, dan proses matching dengan employer. Kami berkomitmen untuk mempercepat proses semaksimal mungkin.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Apakah ada jaminan keberhasilan penempatan? <div class="faq-icon">+</div></div>
+      <div class="faq-a">Kami tidak bisa menjamin 100% karena keberhasilan bergantung pada performa tes dan keputusan employer. Namun, kami berkomitmen penuh mendampingi kamu dan memberikan kesempatan interview ulang jika gagal di percobaan pertama.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Bagaimana dengan biaya hidup di Jepang? <div class="faq-icon">+</div></div>
+      <div class="faq-a">Sebagian besar employer menyediakan perumahan dengan biaya yang dipotong dari gaji (biasanya Rp 1–2 juta/bulan). Sisa gaji sekitar Rp 13–23 juta sepenuhnya milik kamu, dan kamu bisa mengirim uang ke Indonesia secara rutin.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Apakah bisa membawa keluarga ke Jepang? <div class="faq-icon">+</div></div>
+      <div class="faq-a">Untuk Tokutei Ginou Level 1 (masa kerja hingga 5 tahun), belum bisa membawa keluarga. Namun jika kamu naik ke Level 2, kamu sudah bisa mengajukan visa keluarga. Kami akan membantu proses tersebut pada waktunya.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / FORM -->
+<section class="cta-section" id="daftar">
+  <h2>Mulai Langkah Mandirimu ke Jepang</h2>
+  <p>Jawab 3 pertanyaan singkat dan kami akan rekomendasikan jalur terbaik untukmu.</p>
+
+  <!-- QUIZ -->
+  <div class="form-card" id="quizCard" style="margin-bottom:1rem">
+    <div class="form-title"><span aria-hidden="true">🎯</span> Cek Kesiapan Kamu — 30 detik</div>
+    <div id="quizContainer">
+      <div class="quiz-step active" data-step="1">
+        <div style="font-size:.85rem;font-weight:700;margin-bottom:.8rem">1/3 — Apa status kamu saat ini?</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          <button class="quiz-opt" onclick="quizAnswer(1,'fresh')">🎓 Baru lulus / belum kerja</button>
+          <button class="quiz-opt" onclick="quizAnswer(1,'switch')">💼 Sudah kerja, ingin ganti karir</button>
+          <button class="quiz-opt" onclick="quizAnswer(1,'alumni')">🇯🇵 Pernah tinggal/kerja di Jepang</button>
+        </div>
+      </div>
+      <div class="quiz-step" data-step="2">
+        <div style="font-size:.85rem;font-weight:700;margin-bottom:.8rem">2/3 — Level bahasa Jepang kamu?</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          <button class="quiz-opt" onclick="quizAnswer(2,'zero')">😅 Belum bisa sama sekali</button>
+          <button class="quiz-opt" onclick="quizAnswer(2,'basic')">📖 Bisa hiragana / sedikit percakapan</button>
+          <button class="quiz-opt" onclick="quizAnswer(2,'jlpt')">📝 Sudah punya sertifikat JLPT</button>
+        </div>
+      </div>
+      <div class="quiz-step" data-step="3">
+        <div style="font-size:.85rem;font-weight:700;margin-bottom:.8rem">3/3 — Kapan ingin berangkat?</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          <button class="quiz-opt" onclick="quizAnswer(3,'asap')">🚀 Secepat mungkin (3-6 bulan)</button>
+          <button class="quiz-opt" onclick="quizAnswer(3,'prepare')">📅 Masih persiapan (6-12 bulan)</button>
+          <button class="quiz-opt" onclick="quizAnswer(3,'explore')">🤔 Baru mau cari tahu dulu</button>
+        </div>
+      </div>
+      <div class="quiz-step" data-step="result" id="quizResult">
+        <div style="text-align:center;padding:.5rem 0">
+          <div style="font-size:2rem;margin-bottom:.5rem" id="resultEmoji">🎌</div>
+          <div style="font-size:1rem;font-weight:800;margin-bottom:.3rem" id="resultTitle"></div>
+          <div style="font-size:.82rem;color:var(--ink-mid);line-height:1.7;margin-bottom:1rem" id="resultDesc"></div>
+          <div style="display:flex;flex-direction:column;gap:.4rem;text-align:left;background:var(--off-white);border-radius:10px;padding:.8rem 1rem;margin-bottom:1rem" id="resultRecs"></div>
+          <button onclick="document.getElementById('quizCard').style.display='none';document.getElementById('formCardMain').style.display='block'" class="form-submit" style="font-size:.85rem">Lanjut Daftar →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card" id="formCardMain" role="form" aria-label="Form Pendaftaran Tokutei Ginou" style="display:none">
+    <div class="form-title" id="form-heading"><span aria-hidden="true">📋</span> Form Pendaftaran Awal</div>
+    <form onsubmit="handleSubmit(event)" aria-labelledby="form-heading">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="f-nama">Nama Lengkap *</label>
+          <input id="f-nama" type="text" placeholder="Nama kamu" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="f-hp">No. WhatsApp *</label>
+          <input id="f-hp" type="tel" placeholder="08xxxxxxxxxx" required autocomplete="tel" pattern="08[0-9]{8,12}" inputmode="numeric">
+        </div>
+        <div class="form-group">
+          <label for="f-usia">Usia</label>
+          <input id="f-usia" type="number" placeholder="25" min="18" max="39" inputmode="numeric">
+        </div>
+        <div class="form-group">
+          <label for="f-pendidikan">Pendidikan Terakhir</label>
+          <select id="f-pendidikan">
+            <option value="">Pilih...</option>
+            <option>SMA / SMK</option>
+            <option>D3</option>
+            <option>S1</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="f-sektor">Sektor yang Diminati</label>
+          <select id="f-sektor">
+            <option value="">Pilih sektor kerja...</option>
+            <option>Perawatan Lansia (介護)</option>
+            <option>Kebersihan Gedung</option>
+            <option>Pengolahan Material</option>
+            <option>Mesin Industri</option>
+            <option>Elektronik & IT</option>
+            <option>Konstruksi</option>
+            <option>Pembuatan Kapal</option>
+            <option>Perawatan Otomotif</option>
+            <option>Penerbangan</option>
+            <option>Perhotelan</option>
+            <option>Pertanian</option>
+            <option>Perikanan & Akuakultur</option>
+            <option>Industri Makanan & Minuman</option>
+            <option>Restoran (外食)</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="f-bahasa">Kemampuan Bahasa Jepang</label>
+          <select id="f-bahasa">
+            <option value="">Pilih level...</option>
+            <option>Belum bisa sama sekali</option>
+            <option>N5 (Dasar)</option>
+            <option>N4 (Elementer)</option>
+            <option>N3 (Menengah)</option>
+            <option>N2 / N1</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="form-submit">Kirim & Dapatkan Konsultasi Gratis 🚀</button>
+      <p class="form-note">🔒 Data kamu aman. Tidak akan dibagikan ke pihak ketiga.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<!-- STICKY CTA BAR -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text"><strong>14 sektor</strong> tersedia · Gaji Rp 15–28 Jt/bulan</div>
+  <a href="#daftar">Daftar Gratis Sekarang →</a>
+</div>
+
+<footer>
+  <div>
+    <strong>Mandiri Tokutei Ginou</strong> &nbsp;<span class="footer-jp">特定技能</span><br>
+    Platform Persiapan Kerja Mandiri ke Jepang via Tokutei Ginou (SSW)<br>
+    <br>
+    <span aria-hidden="true">📱</span> WhatsApp: <a href="https://wa.me/628074181493" style="color:white">+62 807-418-1493</a> &nbsp;|&nbsp;
+    <span aria-hidden="true">🌐</span> <a href="https://mandiritokuteiginou.com" style="color:white">mandiritokuteiginou.com</a>
+  </div>
+  <div style="text-align:right">
+    © 2026 Mandiri Tokutei Ginou<br>
+    <span style="font-size:.7rem">Hak Cipta Dilindungi</span>
+  </div>
+</footer>
+
+<!-- WA FLOAT BUTTON -->
+<a href="https://wa.me/628074181493?text=Halo%2C%20saya%20tertarik%20program%20Tokutei%20Ginou%20dari%20website.%20Bisa%20konsultasi%20gratis%3F" class="wa-float" id="waFloat" target="_blank" rel="noopener" title="Chat via WhatsApp" aria-label="Hubungi kami via WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // Quiz logic
+  const quizData = {};
+  function quizAnswer(step, val) {
+    quizData['q' + step] = val;
+    document.querySelector(`.quiz-step[data-step="${step}"]`).classList.remove('active');
+    if (step < 3) {
+      document.querySelector(`.quiz-step[data-step="${step + 1}"]`).classList.add('active');
+    } else {
+      showQuizResult();
+    }
+  }
+  function showQuizResult() {
+    const { q1, q2, q3 } = quizData;
+    let segment, emoji, title, desc, recs;
+
+    if (q1 === 'alumni') {
+      segment = 'alumni';
+      emoji = '🌸'; title = 'Japan Alumni — Fast Track';
+      desc = 'Kamu sudah punya pengalaman Jepang! Proses kamu bisa jauh lebih cepat karena adaptasi budaya sudah ada.';
+      recs = ['✅ Langsung matching employer — skip tahap awal', '✅ SSW Level 2 kemungkinan besar bisa', '✅ Estimasi berangkat: 2-4 bulan', '📌 Sektor rekomendasi: sesuai pengalaman sebelumnya'];
+    } else if (q1 === 'switch' && q2 !== 'zero') {
+      segment = 'career-switcher';
+      emoji = '🚀'; title = 'Career Switcher — Siap Akselerasi';
+      desc = 'Pengalaman kerja + dasar bahasa Jepang adalah kombinasi kuat. Kamu masuk kategori prioritas tinggi untuk employer.';
+      recs = ['✅ Lead Score tinggi — prioritas matching', '✅ Skill kerja existing jadi nilai plus', '✅ Estimasi berangkat: 4-6 bulan', '📌 Lanjutkan belajar ke JLPT N4 untuk peluang lebih besar'];
+    } else {
+      segment = 'fresh-graduate';
+      emoji = '🎓'; title = 'Fresh Start — Fondasi Kuat';
+      desc = q2 === 'zero' ? 'Tenang, banyak kandidat sukses yang mulai dari nol bahasa Jepang! Kami siapkan kamu step by step.' : 'Dasar bahasa Jepang kamu jadi modal bagus. Tinggal lengkapi dokumen dan tes skill.';
+      recs = ['✅ Akses gratis: JLPT N5 prep + kosakata kerja', '✅ Panduan dokumen step-by-step', '✅ Estimasi berangkat: 5-8 bulan', '📌 Sektor populer untuk pemula: Restoran, Pertanian, Makanan'];
+    }
+
+    document.getElementById('resultEmoji').textContent = emoji;
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('resultDesc').textContent = desc;
+    document.getElementById('resultRecs').innerHTML = recs.map(r => `<div style="font-size:.78rem;color:var(--ink-mid);line-height:1.5">${r}</div>`).join('');
+    document.querySelector('.quiz-step[data-step="result"]').classList.add('active');
+
+    // Pass segment to form data
+    quizData.segment = segment;
+  }
+
+  // Mobile menu toggle
+  function toggleMobileMenu() {
+    document.getElementById('hamburgerBtn').classList.toggle('active');
+    document.getElementById('mobileMenu').classList.toggle('active');
+    document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('active') ? 'hidden' : '';
+  }
+
+  // Language toggle (ID ↔ JP)
+  let currentLang = 'id';
+  const translations = {
+    ja: {
+      heroTitle: '日本で<em>自立</em>して<br>働こう、<br>ブローカー不要',
+      heroSub: 'インドネシア人労働者が特定技能ビザを自力で取得するためのプラットフォーム。完全なガイド、準備ツール、透明なサポート。',
+      ctaMain: '無料相談に登録 →',
+      ctaSub: 'プロセスを見る',
+      whyTitle: 'ブローカーなしで<br>日本で働く準備',
+      howTitle: '登録から<br>出発まで',
+      sectorTitle: '特定技能<br>14分野',
+      faqTitle: 'よくある<br>質問',
+      formTitle: '日本への第一歩を踏み出そう'
+    }
+  };
+
+  function toggleLang() {
+    currentLang = currentLang === 'id' ? 'ja' : 'id';
+    const btn = document.getElementById('langToggle');
+    if (currentLang === 'ja') {
+      btn.innerHTML = '🇮🇩 Bahasa';
+      document.documentElement.lang = 'ja';
+      // Apply JP translations to key elements
+      const h1 = document.querySelector('.hero-content h1');
+      if (h1) { h1.dataset.origId = h1.dataset.origId || h1.innerHTML; h1.innerHTML = translations.ja.heroTitle; }
+      const sub = document.querySelector('.hero-sub');
+      if (sub) { sub.dataset.origId = sub.dataset.origId || sub.innerHTML; sub.textContent = translations.ja.heroSub; }
+    } else {
+      btn.innerHTML = '🇯🇵 日本語';
+      document.documentElement.lang = 'id';
+      // Restore ID
+      const h1 = document.querySelector('.hero-content h1');
+      if (h1 && h1.dataset.origId) h1.innerHTML = h1.dataset.origId;
+      const sub = document.querySelector('.hero-sub');
+      if (sub && sub.dataset.origId) sub.innerHTML = sub.dataset.origId;
+    }
+  }
+
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  const stickyCta = document.getElementById('stickyCta');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    // Show sticky CTA after scrolling past hero (approx 600px)
+    if (stickyCta) {
+      stickyCta.classList.toggle('visible', window.scrollY > 600);
+      // Hide when near the form section
+      const formSection = document.getElementById('daftar');
+      if (formSection) {
+        const formTop = formSection.getBoundingClientRect().top;
+        if (formTop < window.innerHeight) stickyCta.classList.remove('visible');
+      }
+    }
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ accordion — accessible
+  document.querySelectorAll('.faq-q').forEach((q, idx) => {
+    q.setAttribute('role', 'button');
+    q.setAttribute('tabindex', '0');
+    q.setAttribute('aria-expanded', 'false');
+    q.setAttribute('aria-controls', 'faq-a-' + idx);
+    const answer = q.nextElementSibling;
+    answer.id = 'faq-a-' + idx;
+    answer.setAttribute('role', 'region');
+    answer.setAttribute('aria-labelledby', 'faq-q-' + idx);
+    q.id = 'faq-q-' + idx;
+    
+    function toggleFaq() {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        q.setAttribute('aria-expanded', 'true');
+      }
+    }
+    
+    q.addEventListener('click', toggleFaq);
+    q.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleFaq();
+      }
+    });
+  });
+
+  // Form submit — real webhook integration
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const inputs = form.querySelectorAll('input, select, textarea');
+    
+    // Collect form data
+    const data = {};
+    const fields = ['nama', 'noHp', 'usia', 'pendidikan', 'sektor', 'bahasa'];
+    inputs.forEach((input, i) => {
+      if (fields[i]) data[fields[i]] = input.value.trim();
+    });
+    
+    // Validate required fields
+    if (!data.nama || data.nama.length < 2) {
+      showFormError('Mohon isi nama lengkap kamu');
+      return;
+    }
+    if (data.nama.length > 100) {
+      showFormError('Nama terlalu panjang (maksimal 100 karakter)');
+      return;
+    }
+    
+    // Validate Indonesian phone number
+    const waRegex = /^08[0-9]{8,12}$/;
+    if (!waRegex.test(data.noHp)) {
+      showFormError('Nomor WhatsApp tidak valid. Format: 08xxxxxxxxxx');
+      return;
+    }
+
+    // Validate age if provided
+    if (data.usia && (parseInt(data.usia) < 18 || parseInt(data.usia) > 39)) {
+      showFormError('Usia harus antara 18-39 tahun');
+      return;
+    }
+    
+    // Sanitize all inputs (strip HTML, script tags, trim)
+    Object.keys(data).forEach(key => {
+      if (typeof data[key] === 'string') {
+        data[key] = data[key].replace(/<[^>]*>/g, '').replace(/[<>\"\'&]/g, '').trim().substring(0, 200);
+      }
+    });
+    
+    // Add metadata
+    data.source = 'website';
+    data.timestamp = new Date().toISOString();
+    data.utm = new URLSearchParams(window.location.search).toString() || 'direct';
+    data.segment = (typeof quizData !== 'undefined' && quizData.segment) ? quizData.segment : 'unknown';
+    
+    // Loading state
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Mengirim pendaftaran...';
+    btn.style.opacity = '.7';
+    
+    // Send to n8n webhook with timeout
+    const webhookUrl = 'https://n8n-lb9wcjvt8ui7.emas.sumopod.my.id/webhook/mandiri-tg-daftar';
+    
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+    
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+      signal: controller.signal
+    })
+    .then(res => {
+      clearTimeout(timeoutId);
+      if (!res.ok) throw new Error('Network response was not ok');
+      // Success state
+      btn.innerHTML = '✅ Terima kasih! Tim kami akan menghubungi via WhatsApp dalam 24 jam.';
+      btn.style.background = '#16a34a';
+      btn.style.opacity = '1';
+      if (typeof mtgTrack === 'function') mtgTrack('form_complete', { sector: data.sektor, segment: data.segment });
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        form.reset();
+        btn.innerHTML = 'Kirim & Dapatkan Konsultasi Gratis 🚀';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 8000);
+    })
+    .catch(err => {
+      console.error('Webhook error:', err);
+      // Fallback: redirect to WhatsApp
+      const waText = encodeURIComponent(
+        `Halo, saya ${data.nama} ingin mendaftar program Tokutei Ginou.\n` +
+        `Sektor: ${data.sektor || '-'}\n` +
+        `Bahasa Jepang: ${data.bahasa || '-'}\n` +
+        `Dari: website mandiritokuteiginou.com`
+      );
+      btn.innerHTML = '⚠️ Server sibuk. Mengarahkan ke WhatsApp...';
+      btn.style.background = '#d97706';
+      btn.style.opacity = '1';
+      setTimeout(() => {
+        window.open(`https://wa.me/628074181493?text=${waText}`, '_blank');
+        btn.innerHTML = 'Kirim & Dapatkan Konsultasi Gratis 🚀';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 2000);
+    });
+  }
+  
+  function showFormError(msg) {
+    let errEl = document.querySelector('.form-error');
+    if (!errEl) {
+      errEl = document.createElement('div');
+      errEl.className = 'form-error';
+      errEl.style.cssText = 'color:#e63946;font-size:.78rem;font-weight:600;text-align:center;margin-top:.6rem;padding:.5rem;background:rgba(230,57,70,.08);border-radius:8px;';
+      document.querySelector('.form-submit').insertAdjacentElement('afterend', errEl);
+    }
+    errEl.textContent = '⚠️ ' + msg;
+    setTimeout(() => errEl.remove(), 4000);
+  }
+
+  // Sector modal
+  function openSector(el) {
+    const d = el.dataset;
+    const icon = el.querySelector('.icon').textContent;
+    document.getElementById('m-icon').textContent = icon;
+    document.getElementById('m-name').textContent = d.name;
+    document.getElementById('m-jp').textContent = d.jp;
+    document.getElementById('m-salary').textContent = d.salary;
+    document.getElementById('m-demand').textContent = d.demand;
+    document.getElementById('m-desc').textContent = d.desc;
+    
+    const skillsList = document.getElementById('m-skills');
+    skillsList.innerHTML = '';
+    d.skills.split('|').forEach(s => {
+      const li = document.createElement('li');
+      li.textContent = s.trim();
+      skillsList.appendChild(li);
+    });
+    
+    const waText = encodeURIComponent('Halo, saya tertarik sektor ' + d.name + ' di program Tokutei Ginou. Bisa info lebih lanjut?');
+    document.getElementById('m-cta').href = 'https://wa.me/628074181493?text=' + waText;
+    
+    document.getElementById('sectorModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeSector() {
+    document.getElementById('sectorModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeSector();
+  });
+
+  // Animated lead counter
+  const counterEl = document.getElementById('lead-counter');
+  if (counterEl) {
+    let count = 0;
+    const target = 147;
+    const duration = 1500;
+    const step = target / (duration / 16);
+    const counterAnim = () => {
+      count = Math.min(count + step, target);
+      counterEl.textContent = Math.floor(count) + '+';
+      if (count < target) requestAnimationFrame(counterAnim);
+    };
+    const counterObs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { counterAnim(); counterObs.disconnect(); }
+    });
+    counterObs.observe(counterEl);
+  }
+
+  // Dynamic WA float — personalize based on scroll context
+  let lastSeenSector = '';
+  const sectorChips = document.querySelectorAll('.sector-chip[data-name]');
+  const waFloat = document.getElementById('waFloat');
+  const sectorObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.target.dataset.name) {
+        lastSeenSector = entry.target.dataset.name;
+      }
+    });
+  }, { threshold: 0.5 });
+  sectorChips.forEach(chip => sectorObs.observe(chip));
+
+  // Update WA link on click based on context
+  if (waFloat) {
+    waFloat.addEventListener('click', (e) => {
+      if (lastSeenSector) {
+        e.preventDefault();
+        const msg = encodeURIComponent('Halo, saya tertarik sektor ' + lastSeenSector + ' di Tokutei Ginou dari website. Bisa info lebih lanjut?');
+        window.open('https://wa.me/628074181493?text=' + msg + '&utm_source=web&utm_content=' + encodeURIComponent(lastSeenSector), '_blank');
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
